@@ -2,11 +2,65 @@
 
 <html lang="en">
     <head>
+        <!-- Required meta tags -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Document</title>
+
+        <!-- Bootstrap CSS -->
+        <!--suppress JSUnresolvedLibraryURL -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <title>Chef</title>
     </head>
     <body>
-        HELLO!!
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Chef</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <!-- We are adding CSRF Token to provide security from malicious requests -->
+            <form action="/chef" method="post">
+                {% csrf_token %}
+                <div class="form-floating mt-4">
+                    <textarea name="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px;"></textarea>
+                    <label for="floatingTextarea2">Enter The Ingredients You Have, We Will Suggest You Top Recipes!!</label>
+                </div>
+
+                <div class="form-check form-switch">
+                    <label for="checkbox1"></label>
+                    <input class="form-check-input" type="checkbox" id="checkbox1" name="small" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Small/Quick Recipes</label>
+                </div>
+
+                <div class="form-check form-switch">
+                    <label for="checkbox2"></label>
+                    <input class="form-check-input" type="checkbox" id="checkbox2" name="med" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Medium Recipes</label>
+                </div>
+
+                <div class="form-check form-switch">
+                    <label for="checkbox21"></label>
+                    <input class="form-check-input" type="checkbox" id="checkbox21" name="large" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Large Recipes</label>
+                </div>
+
+                <button type="submit" class="btn btn-dark mt-4">Submit</button>
+            </form>
+        </div>
+        <!--suppress JSUnresolvedLibraryURL -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     </body>
 </html>
